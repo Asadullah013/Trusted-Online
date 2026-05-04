@@ -27,13 +27,13 @@ const Login = ({ setAuth }) => {
       <div className="row justify-content-center mt-5">
         <div className="col-md-4">
           <div className="card p-4 shadow border-0" style={{ borderRadius: '20px' }}>
-            <h3 className="text-center mb-4 fw-bold">Admin Login</h3>
+            <h3 className="text-center mb-4 fw-bold">Seller Login</h3>
             <form onSubmit={handleLogin}>
               <div className="mb-3">
                 <label className="small fw-bold text-muted">Email Address</label>
                 <input 
                   type="email" 
-                  placeholder="admin@example.com" 
+                  placeholder="seller@example.com" 
                   className="form-control rounded-pill px-3" 
                   onChange={e => setEmail(e.target.value)} 
                   required 
@@ -50,7 +50,7 @@ const Login = ({ setAuth }) => {
                 />
               </div>
               <button className="btn btn-primary w-100 rounded-pill fw-bold py-2 shadow-sm">
-                Login as Admin
+                Login as Seller
               </button>
             </form>
           </div>
