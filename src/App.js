@@ -52,9 +52,6 @@ function App() {
       {/* PWA Install Logic yahan add kar diya hai */}
       <InstallPWA />
 
-      <footer className="text-center mt-5 p-4 border-top bg-light">
-        <p className="mb-0 text-muted">&copy; 2026 My Clothing Store | Designed by Asadullah</p>
-      </footer>
     </Router>
   );
 }
