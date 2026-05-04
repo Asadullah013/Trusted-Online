@@ -128,7 +128,7 @@ const Navbar = ({ setSearchQuery, setSelectedCategory, isAdmin, handleLogout }) 
           ) : (
             <Link to="/admin" className={`text-decoration-none d-flex flex-column align-items-center ${isActive('/admin')}`}>
               <span className="fs-5">👤</span>
-              <span style={{ fontSize: '10px', fontWeight: 'bold' }}>Admin</span>
+              <span style={{ fontSize: '10px', fontWeight: 'bold' }}>Seller</span>
             </Link>
           )}
 
