@@ -6,19 +6,19 @@
       "src": "Logo.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "Logo.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "orientation": "portrait",
-  "description": "Trusted Online Shopping Store"
+  "description": "Trusted Online Shopping Store by Asadullah"
 }
