@@ -46,10 +46,9 @@ const ProductDetail = () => {
     window.dispatchEvent(new Event('cartUpdated'));
   };
 
-  // Updated WhatsApp Handler with Product Info
   const handleWhatsApp = () => {
-    const phoneNumber = "923313514847"; // Apna WhatsApp number yahan likhein
-    const productUrl = window.location.href; // Current product page link
+    const phoneNumber = "923313514847"; 
+    const productUrl = window.location.href; 
     
     const message = `*Assalam o Alaikum!* 
 I am interested in buying this product from *S.io STORE*:
@@ -85,10 +84,27 @@ Please let me know the availability.`;
     <div className="container mt-4 mt-md-5 mb-5">
       <div className="row g-lg-5">
         
-        {/* Left: Image Section */}
+        {/* Left: Image Section with Fixed Carousel Controls */}
         <div className="col-md-6 mb-4">
           <div className="sticky-top" style={{ top: '100px', zIndex: 1 }}>
             <div id="productCarousel" className="carousel slide shadow-sm border-0 rounded-5 overflow-hidden" data-bs-ride="carousel">
+              
+              {/* Indicators (Dots) - Visible only if multiple images exist */}
+              {images.length > 1 && (
+                <div className="carousel-indicators">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      data-bs-target="#productCarousel"
+                      data-bs-slide-to={index}
+                      className={index === 0 ? 'active' : ''}
+                      aria-current={index === 0 ? 'true' : 'false'}
+                    ></button>
+                  ))}
+                </div>
+              )}
+
               <div className="carousel-inner bg-white">
                 {images.map((img, index) => (
                   <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
@@ -103,6 +119,20 @@ Please let me know the availability.`;
                   </div>
                 ))}
               </div>
+
+              {/* Controls (Next/Prev) - Visible only if multiple images exist */}
+              {images.length > 1 && (
+                <>
+                  <button className="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
+                  </button>
+                  <button className="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                    <span className="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -158,7 +188,6 @@ Please let me know the availability.`;
               </p>
             </div>
 
-            {/* Purchase Button - Triggers WhatsApp with info */}
             <button 
               className="btn btn-success btn-lg w-100 py-3 fw-bold rounded-pill shadow-lg" 
               onClick={handleWhatsApp}
