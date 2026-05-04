@@ -88,7 +88,7 @@ const Admin = () => {
 
   return (
     <div className="container mt-5 mb-5">
-      <h2 className="text-center mb-5 fw-bold">Admin Dashboard</h2>
+      <h2 className="text-center mb-5 fw-bold">Seller Dashboard</h2>
       
       <div className="row">
         {/* Add Product Form */}
