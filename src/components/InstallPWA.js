@@ -11,10 +11,15 @@ const InstallPWA = () => {
       // Event ko save kar lena taake baad mein trigger kar sakain
       setDeferredPrompt(e);
       
-      // Logic: User 10 second rukay ya 30% scroll kare tabhi banner dikhayein
-      setTimeout(() => {
-        setShowInstallBanner(true);
+      // Logic: User 10 second rukay tabhi banner dikhayein taake distraction na ho
+      const timer = setTimeout(() => {
+        // Check if already installed
+        if (!window.matchMedia('(display-mode: standalone)').matches) {
+          setShowInstallBanner(true);
+        }
       }, 10000); 
+
+      return () => clearTimeout(timer);
     };
 
     window.addEventListener('beforeinstallprompt', handler);
@@ -30,7 +35,7 @@ const InstallPWA = () => {
     
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
-      console.log('User installed the app');
+      console.log('User installed the Trusted Online app');
     }
     
     setDeferredPrompt(null);
@@ -40,15 +45,30 @@ const InstallPWA = () => {
   if (!showInstallBanner) return null;
 
   return (
-    <div className="fixed-bottom p-3 animate__animated animate__slideInUp" style={{ zIndex: 1050 }}>
-      <div className="alert alert-light shadow-lg border-0 rounded-4 d-flex align-items-center justify-content-between">
-        <div>
-          <strong className="text-dark">S.io Store ko App banayen!</strong>
-          <p className="small text-muted mb-0">Fast access aur offline browsing ke liye install karein.</p>
+    <div className="fixed-bottom p-3" style={{ zIndex: 1050 }}>
+      <div 
+        className="alert alert-light shadow-lg border-0 rounded-4 d-flex align-items-center justify-content-between animate__animated animate__slideInUp"
+        style={{ maxWidth: '500px', margin: '0 auto' }}
+      >
+        <div className="pe-3">
+          <strong className="text-dark d-block">Get the Trusted Online App!</strong>
+          <p className="small text-muted mb-0">Install for faster access and a better shopping experience.</p>
         </div>
-        <div className="d-flex gap-2">
-          <button className="btn btn-sm btn-outline-secondary border-0" onClick={() => setShowInstallBanner(false)}>Nahi Shukria</button>
-          <button className="btn btn-sm btn-primary rounded-pill px-3" onClick={handleInstallClick}>Install</button>
+        <div className="d-flex gap-2 align-items-center">
+          <button 
+            className="btn btn-sm text-secondary fw-bold border-0" 
+            onClick={() => setShowInstallBanner(false)}
+            style={{ fontSize: '12px' }}
+          >
+            NOT NOW
+          </button>
+          <button 
+            className="btn btn-sm btn-primary rounded-pill px-3 fw-bold" 
+            onClick={handleInstallClick}
+            style={{ fontSize: '12px' }}
+          >
+            INSTALL
+          </button>
         </div>
       </div>
     </div>
